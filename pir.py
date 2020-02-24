@@ -21,7 +21,7 @@ SOFTWARE.
 
 import RPi.GPIO as GPIO #Import GPIO library
 import time #Import time library 
-
+import gsm #Import gsm from python script
 #Set GPIO pin numbering 
 GPIO.setmode(GPIO.BOARD) 
 
@@ -39,9 +39,10 @@ while True:
 	if GPIO.input(pir): #Check whether pir is HIGH print "Motion Detected!" 
 		print "Motion Detected"
 		GPIO.output(8,1)
+ 		time.sleep(2) #D1- Delay to avoid multiple detection
+		sendSMS(9626604328, "Cool Buddy")
+		
+time.sleep(2) 		
+		
+		
 
-
-
-time.sleep(2) #D1- Delay to avoid multiple detection
-
-time.sleep(0.1) #While loop delay should be less than detection(hardware) delay
